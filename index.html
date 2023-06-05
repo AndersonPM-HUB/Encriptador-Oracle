@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador</title>
+    <link rel="stylesheet" href="css/styles.css">
+    
+</head>
+<body>
+    <header>
+        <img src="media/Vector.png" alt="logo" srcset="">
+        <p><em>Desarrollado por:</em> Anderson Arbey Pedroza </p>
+    </header>
+
+    <div class="campo-texto">
+        <input id="id-texto" type="text" placeholder=" Ingrese el texto aqui">
+    </div>
+
+    <div class="resultado">
+       
+        <div id="mensaje"> 
+            <img src="media/Muñeco.png" alt="muñeco" srcset="">
+            <h3>Ningún mensaje fue encontrado</h3>
+            <p>Ingresa el texto que desees encriptar o desencriptar.</p>
+        </div>  
+    </div>
+
+    <div class="botones">
+        <p>Solo letras minúsculas y sin acentos</p>
+        <div class="contenedor">
+            <button id="b1" type="submit" onclick="encriptar()">ENCRIPTAR</button>
+            <button id="b2" type="submit" onclick="desencriptar()">DESENCRIPTAR</button>
+        </div>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
