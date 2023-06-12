@@ -17,40 +17,42 @@ function encriptar() {
     //obtener la imagen para oculatarla
   }
   let textoM = texto.toLowerCase();
-  let textoencritado = "";
+  let textoencriptado = "";
   console.log(textoM);
 
-  for (var i = 0; i < textoM.length; i++) {
-    var letra = textoM.charAt(i);
-    console.log(letra);
-    if (letra === "e") {
-      textoencritado += "enter";
-    } else if (letra === "i") {
-      textoencritado += "imes";
+  for (let i = 0; i < textoM.length; i++) {
+    let letra = textoM[i];
+    console.log(letra)
+    if (letra === "e" ) {
+      textoencriptado += "enter";
+      
+    } else if (letra === "i" ) {
+      textoencriptado += "imes";
+     
     } else if (letra === "a") {
-      textoencritado += "ai";
-    } else if (letra === "o") {
-      textoencritado += "ober";
+      textoencriptado += "ai";
+     
+    } else if (letra === "o" ) {
+      textoencriptado += "ober";
+    
     } else if (letra === "u") {
-      textoencritado += "ufat";
+      textoencriptado += "ufat";
     } else {
-      textoencritado += letra;
+      textoencriptado += letra;
     }
   }
-  console.log(textoencritado);
+  console.log(textoencriptado);
 
   if (resultado && mensaje) {
     mensaje.style.display = 'none'; // Ocultar el div "mensaje"
-    parrafo.textContent = textoencritado;
+    parrafo.textContent = textoencriptado;
     resultado.appendChild(parrafo); // Agregar el párrafo al div "resultado"
     resultado.appendChild(button); //
 
     button.addEventListener("click", copy);
   }
-
- 
-
 }
+
 
 function desencriptar(){
   let texto2 = document.getElementById("id-texto").value;
@@ -64,22 +66,36 @@ function desencriptar(){
   }
   let textoM = texto2.toLowerCase();
   console.log(textoM)
-  if (textoM.includes('enter')){
-    textoM = textoM.replace('enter', 'e')
-  }if (texto2.includes('imes')){
-    textoM = textoM.replace('imes', 'i')
-  }if (texto2.includes('ai')){
-    textoM=textoM.replace('ai', 'a')
-  }if (texto2.includes('ober')){
-    textoM=textoM.replace('ober', 'o')
-  }if (texto2.includes('ufat')){
-    textoM= textoM.replace('ufat', 'u')
+  let textoDesencriptado = ""
+
+  for (let i = 0; i < textoM.length; i++) {
+    let letra = textoM[i];
+    console.log(letra)
+    if (letra === "e" && textoM.slice(i, i + 5) === "enter") {
+      textoDesencriptado += "e";
+      i += 4;
+       // Saltar los caracteres adicionales encriptados
+    } else if (letra === "i" && textoM.slice(i, i + 4) === "imes") {
+      textoDesencriptado += "i";
+      i += 3; // Saltar los caracteres adicionales encriptados
+    } else if (letra === "a" && textoM.slice(i, i + 2) === "ai") {
+      textoDesencriptado += "a";
+      i += 1; // Saltar los caracteres adicionales encriptados
+    } else if (letra === "o" && textoM.slice(i, i + 4) === "ober") {
+      textoDesencriptado += "o";
+      i += 3; // Saltar los caracteres adicionales encriptados
+    } else if (letra === "u" && textoM.slice(i, i + 4) === "ufat") {
+      textoDesencriptado += "u";
+      i += 3; // Saltar los caracteres adicionales encriptados
+    } else {
+      textoDesencriptado += letra;
+    }
   }
-  console.log(textoM);
+  console.log(textoDesencriptado);
 
   if(resultado){
     mensaje.style.display = 'none'; // Ocultar el div "mensaje"
-    parrafo.textContent= textoM
+    parrafo.textContent= textoDesencriptado
     resultado.appendChild(parrafo); // Agregar el párrafo al div "resultado"
     resultado.appendChild(button); //
     button.addEventListener("click", copy);
@@ -89,11 +105,20 @@ function desencriptar(){
 }
 
 async function copy() {
+    
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Texto copiado',
+      showConfirmButton: false,
+      timer: 1000
+    })
+
     let text=document.getElementById('parrafotexto')
     console.log(text.textContent)
     await navigator.clipboard.writeText(text.textContent)
     .then(function() {
-        // Éxito al copiar el texto
+       
         button.addEventListener("click", page);
         
     })

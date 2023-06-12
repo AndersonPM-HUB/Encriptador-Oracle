@@ -18,7 +18,7 @@ header img{
   height: 60%;
   width: 80%;
 }
-.campo-texto input{
+.campo-texto textarea{
   position: relative; 
   background-color: #e5e5e5;
   border: none;
@@ -34,12 +34,13 @@ header img{
   padding-top: 10px;
 }
 .resultado {
+  position: relative;
   background-color: white;
   border-radius: 20px;
   float: right;
   width: 20%;
   height: 90vh;
-  margin: 10px 20px 10px 0;
+  margin: 10px 20px 5px 0px;
   display: block;
 
 }
@@ -48,7 +49,7 @@ header img{
   width: 90%;
 }
 .resultado #parrafotexto{
-  width: 336px;
+  width: 90%;
   height:80%;
   top: 72px;
   font-family: 'Inter';
@@ -121,3 +122,57 @@ header img{
   margin: 5px; 
 }
 
+/*tablet */
+@media screen and (max-width: 850px){
+  .resultado{
+    position: fixed;
+    width: 100%;
+    height: 20%;
+    bottom: 30px;
+    margin:  50px 10px 0 10px;
+    overflow: auto;
+    
+  }
+
+  .campo-texto{
+    width: 100%;
+  }
+  .botones{
+    width: 100%;
+    margin-bottom: 100px;
+  }
+
+  .resultado #parrafotexto{
+    overflow: auto;
+    width: 90%;
+    height: 30%;
+  }
+  .resultado img{
+    margin-top: 0px;
+    display: none;
+  }
+
+  #miBoton{
+    position: absolute;
+    margin-top: 100px;
+    
+
+  }
+}
+
+/*CELULAR**/
+
+@media screen and (max-width:360px){
+  .campo-texto{
+    height: 50%;
+    margin-bottom: 20px;
+  }
+  .botones{
+    margin-top: 40vh;
+  }
+  .resultado{
+    height: 20%;
+
+  }
+  
+}
